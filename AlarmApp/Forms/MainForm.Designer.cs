@@ -30,10 +30,6 @@
 		{
 			components = new System.ComponentModel.Container();
 			flowLayoutPanel1 = new FlowLayoutPanel();
-			alarmuc1 = new UserControls.AlarmUC();
-			alarmuc2 = new UserControls.AlarmUC();
-			alarmuc3 = new UserControls.AlarmUC();
-			alarmuc4 = new UserControls.AlarmUC();
 			groupBox2 = new GroupBox();
 			DateFilterpnl = new Panel();
 			label7 = new Label();
@@ -56,7 +52,6 @@
 			label1 = new Label();
 			Titletxt = new TextBox();
 			timer1 = new System.Windows.Forms.Timer(components);
-			flowLayoutPanel1.SuspendLayout();
 			groupBox2.SuspendLayout();
 			DateFilterpnl.SuspendLayout();
 			groupBox1.SuspendLayout();
@@ -65,42 +60,10 @@
 			// flowLayoutPanel1
 			// 
 			flowLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-			flowLayoutPanel1.Controls.Add(alarmuc1);
-			flowLayoutPanel1.Controls.Add(alarmuc2);
-			flowLayoutPanel1.Controls.Add(alarmuc3);
-			flowLayoutPanel1.Controls.Add(alarmuc4);
 			flowLayoutPanel1.Location = new Point(543, 12);
 			flowLayoutPanel1.Name = "flowLayoutPanel1";
 			flowLayoutPanel1.Size = new Size(1281, 1210);
 			flowLayoutPanel1.TabIndex = 1;
-			// 
-			// alarmuc1
-			// 
-			alarmuc1.Location = new Point(3, 3);
-			alarmuc1.Name = "alarmuc1";
-			alarmuc1.Size = new Size(627, 182);
-			alarmuc1.TabIndex = 0;
-			// 
-			// alarmuc2
-			// 
-			alarmuc2.Location = new Point(636, 3);
-			alarmuc2.Name = "alarmuc2";
-			alarmuc2.Size = new Size(627, 182);
-			alarmuc2.TabIndex = 1;
-			// 
-			// alarmuc3
-			// 
-			alarmuc3.Location = new Point(3, 191);
-			alarmuc3.Name = "alarmuc3";
-			alarmuc3.Size = new Size(627, 182);
-			alarmuc3.TabIndex = 2;
-			// 
-			// alarmuc4
-			// 
-			alarmuc4.Location = new Point(636, 191);
-			alarmuc4.Name = "alarmuc4";
-			alarmuc4.Size = new Size(627, 182);
-			alarmuc4.TabIndex = 3;
 			// 
 			// groupBox2
 			// 
@@ -343,7 +306,6 @@
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "Hatırlatıcı Uygulama";
 			Load += MainForm_Load;
-			flowLayoutPanel1.ResumeLayout(false);
 			groupBox2.ResumeLayout(false);
 			DateFilterpnl.ResumeLayout(false);
 			DateFilterpnl.PerformLayout();
@@ -375,10 +337,6 @@
 		private Label label6;
 		private DateTimePicker BeginDatedtp;
 		private Label Warninglbl;
-		private UserControls.AlarmUC alarmuc1;
-		private UserControls.AlarmUC alarmuc2;
-		private UserControls.AlarmUC alarmuc3;
-		private UserControls.AlarmUC alarmuc4;
 		private System.Windows.Forms.Timer timer1;
 	}
 }

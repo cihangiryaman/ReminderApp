@@ -19,31 +19,48 @@ namespace AlarmApp.Forms
 		public MainForm()
 		{
 			InitializeComponent();
-			timer1.Interval = 3_600_000;
+			timer1.Interval = 1000;//3_600_000;
 			timer1.Start();
-			CheckAlarms();
+			NotificationManager manager = new NotificationManager();
+			CheckAlarms().ForEach(a => manager.CreateWindowsNotification(a).ShowBalloonTip(2000));
 		}
 
-		private void CheckAlarms()
+		private List<Alarm> CheckAlarms()
 		{
 			AlarmManager manager = new AlarmManager();
-			List<Alarm> dueAlarms = manager.GetAll().Where(a => a.DueDateTime.Date.AddDays(-3) <= DateTime.Now.Date).ToList();
-			manager = null;
-			GC.Collect();
+			List<Alarm> dueAlarms = manager.GetAll().Where(a => a.DueDateTime.Date <= DateTime.Now.Date).ToList();
+			List<Alarm> ringAlarms = new List<Alarm>();
+			foreach (Alarm alarm in dueAlarms)
+			{
+				foreach (int dayBeforeAlarm in alarm.DaysBeforeAlarm)
+				{
+					if ((alarm.DueDateTime.AddDays(-dayBeforeAlarm) > DateTime.Now) && alarm.IsVisible)
+					{
+						ringAlarms.Add(alarm);
+					}
+				}
+			}
+
+			return ringAlarms;
 		}
 
-		private void MainForm_Load(object sender, EventArgs e)
+		private async void FillAlarmsPanel()
 		{
 			AlarmManager manager = new AlarmManager();
 			List<Alarm> alarms = manager.GetAll();
 			foreach (Alarm alarm in alarms)
 			{
 				AlarmUC alarmUc = new AlarmUC();
-				alarmUc.Descriptiontxt.Text = alarm.Description;
-				//alarmUc.
+				alarmUc.Titlelbl.Text = alarm.Title;
+				alarmUc.Descriptionlbl.Text = alarm.Description;
+				alarmUc.DueDatelbl.Text = alarm.DueDateTime.Date.Day + "." + alarm.DueDateTime.Date.Month + "." + alarm.DueDateTime.Date.Year;
+				flowLayoutPanel1.Controls.Add(alarmUc);
 			}
-			manager = null;
-			GC.Collect();
+		}
+
+		private void MainForm_Load(object sender, EventArgs e)
+		{
+			FillAlarmsPanel();
 		}
 
 		private void Addbtn_Click(object sender, EventArgs e)
@@ -96,7 +113,7 @@ namespace AlarmApp.Forms
 
 		private void timer1_Tick(object sender, EventArgs e)
 		{
-			CheckAlarms();//devam et buradan
+			CheckAlarms();
 		}
 	}
 }
