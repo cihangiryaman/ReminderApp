@@ -52,6 +52,7 @@
 			label1 = new Label();
 			Titletxt = new TextBox();
 			timer1 = new System.Windows.Forms.Timer(components);
+			notifyIcon1 = new NotifyIcon(components);
 			groupBox2.SuspendLayout();
 			DateFilterpnl.SuspendLayout();
 			groupBox1.SuspendLayout();
@@ -293,6 +294,11 @@
 			// 
 			timer1.Tick += timer1_Tick;
 			// 
+			// notifyIcon1
+			// 
+			notifyIcon1.Text = "notifyIcon1";
+			notifyIcon1.Visible = true;
+			// 
 			// MainForm
 			// 
 			AutoScaleDimensions = new SizeF(10F, 25F);
@@ -338,5 +344,6 @@
 		private DateTimePicker BeginDatedtp;
 		private Label Warninglbl;
 		private System.Windows.Forms.Timer timer1;
+		private NotifyIcon notifyIcon1;
 	}
 }

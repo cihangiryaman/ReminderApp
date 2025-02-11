@@ -9,14 +9,6 @@ namespace AlarmApp.Managers
 {
 	public class NotificationManager
 	{
-		public NotifyIcon CreateWindowsNotification(Alarm alarm)
-		{
-			NotifyIcon notification = new NotifyIcon();
-			notification.BalloonTipText = alarm.Description;
-			notification.BalloonTipTitle = alarm.Title;
-			notification.BalloonTipIcon = ToolTipIcon.Info;
-			notification.Icon = SystemIcons.Application;
-			return notification;
-		}
+		
 	}
 }
