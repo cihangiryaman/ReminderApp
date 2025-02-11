@@ -37,7 +37,7 @@
 			// 
 			DueDatelbl.AutoSize = true;
 			DueDatelbl.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point, 162);
-			DueDatelbl.Location = new Point(511, 143);
+			DueDatelbl.Location = new Point(3, 86);
 			DueDatelbl.Name = "DueDatelbl";
 			DueDatelbl.Size = new Size(116, 28);
 			DueDatelbl.TabIndex = 8;
@@ -48,16 +48,16 @@
 			Titlelbl.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 162);
 			Titlelbl.Location = new Point(3, 11);
 			Titlelbl.Name = "Titlelbl";
-			Titlelbl.Size = new Size(261, 92);
+			Titlelbl.Size = new Size(325, 79);
 			Titlelbl.TabIndex = 6;
 			Titlelbl.Text = "label1";
 			// 
 			// Descriptionlbl
 			// 
 			Descriptionlbl.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 162);
-			Descriptionlbl.Location = new Point(273, 11);
+			Descriptionlbl.Location = new Point(334, 11);
 			Descriptionlbl.Name = "Descriptionlbl";
-			Descriptionlbl.Size = new Size(336, 128);
+			Descriptionlbl.Size = new Size(301, 128);
 			Descriptionlbl.TabIndex = 12;
 			// 
 			// AlarmUC
@@ -69,7 +69,7 @@
 			Controls.Add(DueDatelbl);
 			Controls.Add(Titlelbl);
 			Name = "AlarmUC";
-			Size = new Size(625, 176);
+			Size = new Size(654, 176);
 			Paint += AlarmUC_Paint;
 			Resize += AlarmUC_Resize;
 			ResumeLayout(false);

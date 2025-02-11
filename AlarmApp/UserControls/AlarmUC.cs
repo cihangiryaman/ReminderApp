@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AlarmApp.Model.Entities;
 using AlarmApp.Properties;
 using AlarmApp.UserComponents;
 
@@ -17,6 +18,7 @@ namespace AlarmApp.UserControls
 	{
 		public RoundButton Deletebtn { get; set; }
 		public RoundButton Editbtn { get; set; }
+		public Alarm LinkedAlarm { get; set; }
 
 		public AlarmUC()
 		{

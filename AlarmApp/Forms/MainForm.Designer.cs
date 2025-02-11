@@ -39,8 +39,8 @@
 			Filterbtn = new Button();
 			FilterTypecmb = new ComboBox();
 			groupBox1 = new GroupBox();
+			DaysBeforeAlarmnmrc = new NumericUpDown();
 			Warninglbl = new Label();
-			DaysBeforeAlarmtxt = new TextBox();
 			label5 = new Label();
 			Addbtn = new Button();
 			label4 = new Label();
@@ -53,9 +53,14 @@
 			Titletxt = new TextBox();
 			timer1 = new System.Windows.Forms.Timer(components);
 			notifyIcon1 = new NotifyIcon(components);
+			groupBox3 = new GroupBox();
+			dataGridView1 = new DataGridView();
 			groupBox2.SuspendLayout();
 			DateFilterpnl.SuspendLayout();
 			groupBox1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)DaysBeforeAlarmnmrc).BeginInit();
+			groupBox3.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
 			SuspendLayout();
 			// 
 			// flowLayoutPanel1
@@ -63,7 +68,7 @@
 			flowLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
 			flowLayoutPanel1.Location = new Point(543, 12);
 			flowLayoutPanel1.Name = "flowLayoutPanel1";
-			flowLayoutPanel1.Size = new Size(1281, 1210);
+			flowLayoutPanel1.Size = new Size(1325, 728);
 			flowLayoutPanel1.TabIndex = 1;
 			// 
 			// groupBox2
@@ -151,8 +156,8 @@
 			// 
 			// groupBox1
 			// 
+			groupBox1.Controls.Add(DaysBeforeAlarmnmrc);
 			groupBox1.Controls.Add(Warninglbl);
-			groupBox1.Controls.Add(DaysBeforeAlarmtxt);
 			groupBox1.Controls.Add(label5);
 			groupBox1.Controls.Add(Addbtn);
 			groupBox1.Controls.Add(label4);
@@ -171,6 +176,14 @@
 			groupBox1.TabStop = false;
 			groupBox1.Text = "Hatırlatıcı Ekle";
 			// 
+			// DaysBeforeAlarmnmrc
+			// 
+			DaysBeforeAlarmnmrc.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 162);
+			DaysBeforeAlarmnmrc.Location = new Point(305, 576);
+			DaysBeforeAlarmnmrc.Name = "DaysBeforeAlarmnmrc";
+			DaysBeforeAlarmnmrc.Size = new Size(186, 39);
+			DaysBeforeAlarmnmrc.TabIndex = 14;
+			// 
 			// Warninglbl
 			// 
 			Warninglbl.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 162);
@@ -179,16 +192,6 @@
 			Warninglbl.Name = "Warninglbl";
 			Warninglbl.Size = new Size(272, 82);
 			Warninglbl.TabIndex = 13;
-			// 
-			// DaysBeforeAlarmtxt
-			// 
-			DaysBeforeAlarmtxt.BorderStyle = BorderStyle.FixedSingle;
-			DaysBeforeAlarmtxt.Font = new Font("Segoe UI", 11F);
-			DaysBeforeAlarmtxt.Location = new Point(305, 572);
-			DaysBeforeAlarmtxt.Name = "DaysBeforeAlarmtxt";
-			DaysBeforeAlarmtxt.Size = new Size(186, 37);
-			DaysBeforeAlarmtxt.TabIndex = 12;
-			DaysBeforeAlarmtxt.TextChanged += DaysBeforeAlarmtxt_TextChanged;
 			// 
 			// label5
 			// 
@@ -299,12 +302,33 @@
 			notifyIcon1.Text = "notifyIcon1";
 			notifyIcon1.Visible = true;
 			// 
+			// groupBox3
+			// 
+			groupBox3.Controls.Add(dataGridView1);
+			groupBox3.Font = new Font("Corbel", 12F, FontStyle.Bold, GraphicsUnit.Point, 162);
+			groupBox3.Location = new Point(543, 746);
+			groupBox3.Name = "groupBox3";
+			groupBox3.Size = new Size(659, 477);
+			groupBox3.TabIndex = 5;
+			groupBox3.TabStop = false;
+			groupBox3.Text = "Hesap Kesim Tarihleri";
+			// 
+			// dataGridView1
+			// 
+			dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			dataGridView1.Location = new Point(41, 63);
+			dataGridView1.Name = "dataGridView1";
+			dataGridView1.RowHeadersWidth = 62;
+			dataGridView1.Size = new Size(579, 392);
+			dataGridView1.TabIndex = 0;
+			// 
 			// MainForm
 			// 
 			AutoScaleDimensions = new SizeF(10F, 25F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.FromArgb(235, 235, 235);
-			ClientSize = new Size(1836, 1237);
+			ClientSize = new Size(1880, 1237);
+			Controls.Add(groupBox3);
 			Controls.Add(groupBox2);
 			Controls.Add(groupBox1);
 			Controls.Add(flowLayoutPanel1);
@@ -317,6 +341,9 @@
 			DateFilterpnl.PerformLayout();
 			groupBox1.ResumeLayout(false);
 			groupBox1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)DaysBeforeAlarmnmrc).EndInit();
+			groupBox3.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
 			ResumeLayout(false);
 		}
 
@@ -324,7 +351,6 @@
 		private FlowLayoutPanel flowLayoutPanel1;
 		private GroupBox groupBox2;
 		private GroupBox groupBox1;
-		private TextBox DaysBeforeAlarmtxt;
 		private Label label5;
 		private Button Addbtn;
 		private Label label4;
@@ -345,5 +371,8 @@
 		private Label Warninglbl;
 		private System.Windows.Forms.Timer timer1;
 		private NotifyIcon notifyIcon1;
+		private NumericUpDown DaysBeforeAlarmnmrc;
+		private GroupBox groupBox3;
+		private DataGridView dataGridView1;
 	}
 }

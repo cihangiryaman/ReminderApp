@@ -37,6 +37,23 @@ namespace AlarmApp.Managers
 			}
 		}
 
+		public async void Delete(Alarm alarm)
+		{
+			try
+			{
+				using (AlarmDbContext context = new AlarmDbContext())
+				{
+					context.Alarms.Remove(alarm);
+					await context.SaveChangesAsync();
+					MessageBox.Show("Kayıt başarıyla silindi", "İşlem Başarılı", MessageBoxButtons.OK);
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Kayıt silinemedi yeniden deneyiniz.", "İşlem Sırasında Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
+
 		public async void Update(int id, Alarm updatedAlarm)
 		{
 			try
@@ -45,6 +62,24 @@ namespace AlarmApp.Managers
 				{
 					Alarm existingAlarm = context.Alarms.Where(a => a.Id == id).FirstOrDefault();
 					existingAlarm = updatedAlarm;
+					await context.SaveChangesAsync();
+					MessageBox.Show("Kayıt başarıyla güncellendi", "İşlem Başarılı", MessageBoxButtons.OK);
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Kayıt güncellenemedi yeniden deneyiniz.", "İşlem Sırasında Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
+
+		public async void ChangeVisibility(int id)
+		{
+			try
+			{
+				using (AlarmDbContext context = new AlarmDbContext())
+				{
+					Alarm existingAlarm = context.Alarms.Where(a => a.Id == id).FirstOrDefault();
+					existingAlarm.IsVisible = !existingAlarm.IsVisible;
 					await context.SaveChangesAsync();
 					MessageBox.Show("Kayıt başarıyla güncellendi", "İşlem Başarılı", MessageBoxButtons.OK);
 				}
