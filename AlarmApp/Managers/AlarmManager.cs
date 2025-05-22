@@ -81,7 +81,6 @@ namespace AlarmApp.Managers
 					Alarm existingAlarm = context.Alarms.Where(a => a.Id == id).FirstOrDefault();
 					existingAlarm.IsVisible = !existingAlarm.IsVisible;
 					await context.SaveChangesAsync();
-					MessageBox.Show("Kayıt başarıyla güncellendi", "İşlem Başarılı", MessageBoxButtons.OK);
 				}
 			}
 			catch (Exception ex)

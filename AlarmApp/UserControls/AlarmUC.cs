@@ -27,14 +27,14 @@ namespace AlarmApp.UserControls
 			Deletebtn.BackColor = Color.Tomato;
 			Deletebtn.NormalColor = Color.Tomato;
 			Deletebtn.HoverColor = Color.OrangeRed;
-			Deletebtn.Location = new Point(11, 138);
+			Deletebtn.Location = new Point(11, 125);
 			Deletebtn.Size = new Size(122, 34);
 			Deletebtn.Text = "Sil";
 			Editbtn = new RoundButton();
-			Editbtn.BackColor = Color.DeepSkyBlue;
-			Editbtn.NormalColor = Color.DeepSkyBlue;
+			Editbtn.BackColor = Color.SteelBlue;
+			Editbtn.NormalColor = Color.SteelBlue;
 			Editbtn.HoverColor = Color.DodgerBlue;
-			Editbtn.Location = new Point(145, 138);
+			Editbtn.Location = new Point(145, 125);
 			Editbtn.Size = new Size(122, 34);
 			Editbtn.Text = "Düzenle";
 			this.Controls.Add(Deletebtn);

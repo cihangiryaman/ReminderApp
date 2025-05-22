@@ -15,7 +15,7 @@ namespace AlarmApp.Model.Context
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
 			optionsBuilder.UseSqlite(
-				"Data Source=C:\\Users\\Cihangir\\source\\repos\\AlarmApp\\AlarmApp\\Model\\Database.db");
+				"Data Source=" + Directory.GetParent(Directory.GetParent(Directory.GetParent(Environment.CurrentDirectory).FullName).FullName).FullName + "\\Model\\Database.db");
 		}
 	}
 }

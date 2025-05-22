@@ -1,18 +1,32 @@
 ﻿using AlarmApp.Managers;
 using AlarmApp.Model.Context;
 using AlarmApp.Model.Entities;
+using AlarmApp.UserComponents;
 using AlarmApp.UserControls;
 using System.Security.Claims;
+using AlarmApp.Properties;
 
 namespace AlarmApp.Forms
 {
 	public partial class MainForm : Form
 	{
+		public RoundButton Addbtn { get; set; }
 		public MainForm()
 		{
 			InitializeComponent();
 			timer1.Interval = 30000;//3_600_000;
 			timer1.Start();
+			Addbtn = new RoundButton();
+			Addbtn.BackColor = Color.SteelBlue;
+			Addbtn.NormalColor = Color.SteelBlue;
+			Addbtn.HoverColor = Color.DodgerBlue;
+			Addbtn.Location = new Point(174, 643);
+			Addbtn.Size = new Size(200, 50);
+			Addbtn.Text = "Ekle";
+			Addbtn.Click += Addbtn_Click;
+			groupBox1.Controls.Add(Addbtn);
+			flowLayoutPanel1.VerticalScroll.Enabled = true;
+			flowLayoutPanel1.AutoScroll = true;
 		}
 
 		private void timer1_Tick(object sender, EventArgs e)
@@ -31,12 +45,15 @@ namespace AlarmApp.Forms
 
 		public void CreateWindowsNotification(Alarm alarm)
 		{
-			notifyIcon1.Text = alarm.Description;
-			notifyIcon1.BalloonTipText = alarm.Description;
-			notifyIcon1.BalloonTipTitle = alarm.Title;
-			notifyIcon1.BalloonTipIcon = ToolTipIcon.Info;
-			notifyIcon1.Icon = SystemIcons.Application;
-			notifyIcon1.ShowBalloonTip(0);
+			if (alarm.Description != String.Empty)
+			{
+				notifyIcon1.Text = alarm.Description;
+				notifyIcon1.BalloonTipText = alarm.Description;
+				notifyIcon1.BalloonTipTitle = alarm.Title;
+				notifyIcon1.BalloonTipIcon = ToolTipIcon.Info;
+				notifyIcon1.Icon = SystemIcons.Application;
+				notifyIcon1.ShowBalloonTip(1000);
+			}
 		}
 
 		private List<Alarm> CheckAlarms()
@@ -102,21 +119,16 @@ namespace AlarmApp.Forms
 			try
 			{
 				daysBeforeAlarm.Add(Convert.ToInt32(DaysBeforeAlarmnmrc.Text));
-
-				Thread thread = new Thread(t =>
+				AlarmManager manager = new AlarmManager();
+				manager.Add(new Alarm
 				{
-					AlarmManager manager = new AlarmManager();
-					manager.Add(new Alarm
-					{
-						CreateTime = DateTime.Now,
-						DaysBeforeAlarm = daysBeforeAlarm,
-						Title = title,
-						Description = description,
-						DueDateTime = dueDateTime,
-						Tags = [tag]
-					});
+					CreateTime = DateTime.Now,
+					DaysBeforeAlarm = daysBeforeAlarm,
+					Title = title,
+					Description = description,
+					DueDateTime = dueDateTime,
+					Tags = [tag]
 				});
-				thread.Start();
 			}
 			catch
 			{
